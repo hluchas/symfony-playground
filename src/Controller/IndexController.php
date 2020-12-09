@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\UserType;
 use App\Repository\UserRepository;
+use App\Service\ExampleService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +16,14 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, ExampleService $service): Response
     {
         $entity = new User();
         $form = $this->createForm(UserType::class, $entity);
 
         /** @var UserRepository $repository */
-        $repository = $this->getDoctrine()->getRepository(User::class);
+//        $repository = $this->getDoctrine()->getRepository(User::class);
+//        $service->test();
 
         $form->handleRequest($request);
 
