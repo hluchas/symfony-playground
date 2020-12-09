@@ -27,13 +27,13 @@ class UserService
     private $repository;
 
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     private $entityManager;
 
     /**
      * @param UserRepository $repository
-     * @param EntityManager $entityManager
+     * @param EntityManagerInterface $entityManager
      */
     public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
     {
