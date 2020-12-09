@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\Type\EntityType;
+use App\Form\Type\UserType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,10 @@ class IndexController extends AbstractController
     public function index(Request $request): Response
     {
         $entity = new User();
-        $form = $this->createForm(EntityType::class, $entity);
+        $form = $this->createForm(UserType::class, $entity);
+
+        /** @var UserRepository $repository */
+        $repository = $this->getDoctrine()->getRepository(User::class);
 
         $form->handleRequest($request);
 
