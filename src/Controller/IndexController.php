@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Entity;
+use App\Entity\User;
 use App\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,13 +16,13 @@ class IndexController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $entity = new Entity();
+        $entity = new User();
         $form = $this->createForm(EntityType::class, $entity);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Entity $data */
+            /** @var User $data */
             $data = $form->getData();
 
             throw new \RuntimeException('POST not implemented');

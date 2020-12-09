@@ -13,9 +13,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-class Entity
+class User
 {
     /**
      * @ORM\Id()
@@ -27,9 +28,21 @@ class Entity
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="photo")
+     *
+     * @var ArrayCollection
+     */
+    private $photos;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
 
     /**
      * @return int
