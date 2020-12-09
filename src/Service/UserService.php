@@ -15,7 +15,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 
@@ -35,7 +35,7 @@ class UserService
      * @param UserRepository $repository
      * @param EntityManager $entityManager
      */
-    public function __construct(UserRepository $repository, EntityManager $entityManager)
+    public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
     {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
